@@ -1,0 +1,27 @@
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="app">
+    <h2>Todo list</h2>
+    <form v-on:submit.prevent>
+      <input type="text" v-model="newTodo"></input>
+      <button v-on:click="addTodo">Add</button>
+    </form>
+    <p class="error-msg" v-show="hasError">Input more than 1 charactor.</p>
+
+    <ul>
+      <li v-for="(todo, index) in todoList">
+        <input type="checkbox" v-model="todo.isDone"></intput>
+        <span v-bind:class="{ done : todo.isDone }">{{ todo.title }}</span>
+        <button v-on:click="deleteTodo(index)">Delete</button>
+      </li>
+    </ul>
+  </div> <!-- id="app" -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
